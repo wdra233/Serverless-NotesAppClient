@@ -68,7 +68,7 @@ export default function Home() {
             <h1>Scratch</h1>
             <p className="text-muted">A simple note taking app</p>
             <div className="pt-3">
-              <Link to="/login" className="btn btn-danger btn-lg mr-3">
+              <Link to="/login" className="btn btn-info btn-lg mr-3">
                 Login
               </Link>
               <Link to="/signup" className="btn btn-success btn-lg">
