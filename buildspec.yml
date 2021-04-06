@@ -15,7 +15,7 @@ phases:
       - aws s3 cp --recursive --acl public-read ./build s3://notes-app-client-wangyw
       # invalidate the CloudFront cache for index.html and service-worker.js
       # to force CloudFront to update its edge locations with the new versions
-      - echo invalidate cloudfront cache
+      - echo invalidate cloudfront cache...
       - aws cloudfront create-invalidation --distribution-id E1UL94L62E7YXR --paths '/*' && aws cloudfront create-invalidation --distribution-id E1UJL9EIDA6WW5 --paths '/*'
 artifacts:
   files:
