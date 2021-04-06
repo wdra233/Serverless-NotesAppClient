@@ -11,8 +11,8 @@ phases:
   post_build:
     commands:
       # copy the contents of /build to S3
-      - echo upload contents to s3...
-      - aws s3 cp --recursive --acl public-read ./build s3://notes-app-client-wangyw
+      # - echo upload contents to s3...
+      # - aws s3 cp --recursive --acl public-read ./build s3://notes-app-client-wangyw
       # invalidate the CloudFront cache for index.html and service-worker.js
       # to force CloudFront to update its edge locations with the new versions
       - echo invalidate cloudfront cache...
