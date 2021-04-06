@@ -10,8 +10,13 @@ phases:
       - REACT_APP_STAGE=staging npm run build
   post_build:
     commands:
-      # Build app, upload it to S3, and invalidate the CloudFront cache.
-      - npm run deploy
+      # copy the contents of /build to S3
+      - echo upload contents to s3...
+      - aws s3 sync build/ s3://notes-app-client-wangyw --delete 
+      # invalidate the CloudFront cache for index.html and service-worker.js
+      # to force CloudFront to update its edge locations with the new versions
+      - echo invalidate cloudfront cache
+      - aws cloudfront create-invalidation --distribution-id E1UL94L62E7YXR --paths '/*' && aws cloudfront create-invalidation --distribution-id E1UJL9EIDA6WW5 --paths '/*'
 artifacts:
   files:
     - '**/*'
