@@ -9,6 +9,7 @@ import './App.css';
 import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib";
 import { onError } from "./libs/errorLib";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   const history = useHistory();
@@ -73,9 +74,11 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-        <Routes />
-      </AppContext.Provider>
+      <ErrorBoundary>
+        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+          <Routes />
+        </AppContext.Provider>
+      </ErrorBoundary>
     </div>
     )
   );
